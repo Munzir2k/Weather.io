@@ -11,10 +11,10 @@ const UVIndex = () => {
     const { uvIndex } = useGlobalContext();
 
     const { daily } = uvIndex;
-    const { uv_index_max } = daily;
-    const UvIndexMax = uv_index_max[0].toFixed(0);
 
-    const uvIndexCategory = (uvIndex: number) => {
+    const UvIndexMax = daily?.uv_index_max[0]?.toFixed(0);
+
+    const uvIndexCategory = (number: number) => {
         if (uvIndex <= 2) {
             return {
                 text: "Low",

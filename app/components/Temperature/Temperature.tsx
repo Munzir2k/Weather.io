@@ -21,6 +21,10 @@ const Temperature = () => {
     const { main, timezone, weather } = forecast;
     const { city } = fiveDayForecast;
 
+    if (!forecast || !weather) {
+        return <Skeleton className="h-[25rem] w-full" />;
+    }
+
     const temp = KelvinToCelcius(main?.temp);
     const min_temp = minMaxTemp?.daily?.temperature_2m_min[0].toFixed(0);
     const max_temp = minMaxTemp?.daily?.temperature_2m_max[0].toFixed(0);
@@ -50,10 +54,6 @@ const Temperature = () => {
                 return clearSky;
         }
     };
-
-    if (!forecast || !weather) {
-        return <Skeleton className="h-[25rem] w-full" />;
-    }
 
     // Live time update
     useEffect(() => {
